@@ -1,5 +1,5 @@
 {
-    "$schema": "http://www.w3id.org/openeduhub/schema/curriculum-schema#",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://www.w3id.org/openeduhub/schema/curriculum-schema#",
     "title": "Curriculum",
     "description": "A generic JSON schema for describing school curricula",
@@ -8,10 +8,21 @@
         "@context": {
             "id": "@id",
             "type": "@type",
-            "@vocab": "http://schema.org/"
+            "@vocab": "http://schema.org/",
+            "skos": "http://www.w3.org/2004/02/skos/core#",
+            "prefLabel": "skos:prefLabel",
+            "inScheme": "skos:inScheme",
+            "Concept": "skos:Concept"
         }
     },
     "properties": {
+        "@context": {
+            "type": "object",
+            "additionalProperties": true,
+            "_display": {
+                "className": "hidden"
+            }
+        },
         "id": {
             "title": "URL",
             "type": "string",
