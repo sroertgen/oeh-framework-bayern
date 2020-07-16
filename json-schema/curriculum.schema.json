@@ -51,25 +51,28 @@
             "title": "Creator",
             "type": "array",
             "items": {
-                "type": {
-                    "title": "Type",
-                    "type": "string",
-                    "enum": [
-                        "Person",
-                        "Organization"
-                    ]
-                },
-                "name": {
-                    "title": "Name",
-                    "type": "string",
-                    "_display": {
-                        "placeholder": "The creator's name"
+                "type": "object"
+                "properties": {
+                    "type": {
+                        "title": "Type",
+                        "type": "string",
+                        "enum": [
+                            "Person",
+                            "Organization"
+                        ]
+                    },
+                    "name": {
+                        "title": "Name",
+                        "type": "string",
+                        "_display": {
+                            "placeholder": "The creator's name"
+                        }
+                    },
+                    "id": {
+                        "title": "URL",
+                        "type": "string",
+                        "format": "uri"
                     }
-                },
-                "id": {
-                    "title": "URL",
-                    "type": "string",
-                    "format": "uri"
                 }
             },
             "required": [
@@ -154,20 +157,23 @@
             "title": "Subelements of item",
             "type": "array",
             "items": {
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "Course"
-                    ]
-                },
-                "id": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "name": {
-                    "type": "string",
-                    "title": "Name",
-                    "description": "Name of subelement"
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "Course"
+                        ]
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "Name",
+                        "description": "Name of subelement"
+                    }
                 }
             }
         },
