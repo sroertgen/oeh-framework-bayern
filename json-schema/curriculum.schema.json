@@ -51,7 +51,7 @@
             "title": "Creator",
             "type": "array",
             "items": {
-                "type": "object"
+                "type": "object",
                 "properties": {
                     "type": {
                         "title": "Type",
