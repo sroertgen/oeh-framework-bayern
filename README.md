@@ -15,3 +15,9 @@ The model for providing the data is described using [JSON Schema](https://json-s
 Some inspiration was coming from the [K12OCX project](https://k12ocx.github.io/k12ocx-specs/). 
 
 - TODO elaborate
+
+### Documentation
+
+The documentation of the schema is created using [JSON Schema for humans](https://github.com/coveooss/json-schema-for-humans)
+
+`generate-schema-doc [OPTIONS] SCHEMA_FILE [RESULT_FILE]`

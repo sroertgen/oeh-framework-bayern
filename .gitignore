@@ -1,3 +1,4 @@
 .vscode
 .ipynb_checkpoints
 TODOs.org
+*.DS_store
