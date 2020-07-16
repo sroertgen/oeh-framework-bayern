@@ -1,0 +1,57 @@
+{
+  "id": "@id",
+  "type": "@type",
+  "@vocab": "http://www.w3.org/2004/02/skos/core#",
+  "creator": {
+    "@id": "http://purl.org/dc/terms/creator",
+    "@container": "@language"
+  },
+  "title": {
+    "@id": "http://purl.org/dc/terms/title",
+    "@container": "@language"
+  },
+  "description": {
+    "@id": "http://purl.org/dc/terms/description",
+    "@container": "@language"
+  },
+  "educationalLevel": {
+    "@id": "http://purl.org/dcx/lrmi-vocabs/alignmentType/educationalLevel",
+    "@type": "@id"
+  },
+  "educationalContext": {
+    "@id": "https://w3id.org/openeduhub/vocabs/educationalContext/",
+    "@type": "@id"
+  },
+  "prefLabel": {
+    "@container": "@language"
+  },
+  "definition": {
+    "@container": "@language"
+  },
+  "scopeNote": {
+    "@container": "@language"
+  },
+  "note": {
+    "@container": "@language"
+  },
+  "notation": {
+    "@container": "@set"
+  },
+  "narrower": {
+    "@container": "@set"
+  },
+  "broader": {
+    "@type": "@id",
+    "@container": "@set"
+  },
+  "broadMatch": {
+    "@type": "@id",
+    "@container": "@set"
+  },
+  "narrowerTransitive": {
+    "@container": "@set"
+  },
+  "broaderTransitive": {
+    "@container": "@set"
+  }
+}

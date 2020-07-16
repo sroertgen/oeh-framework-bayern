@@ -1,0 +1,100 @@
+@base <http://141.5.108.59:3000/uri/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix educationalContext: <https://w3id.org/openeduhub/vocabs/educationalContext/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<038cc8e6-3b94-11ea-9db2-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <2d553cfe-3b93-11ea-9ddf-0242ac1a0003> ;
+    skos:definition """* an der gesprochenen Standardsprache orientiert und artikuliert sprechen,\r
+* Wirkungen der Redeweise kennen und beachten,\r
+* funktionsangemessen sprechen: erzählen, informieren, argumentieren, appellieren,\r
+* Sprechbeiträge und Gespräche situationsangemessen planen"""@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:prefLabel "zu anderen sprechen"@de .
+
+<30a5a17e-69c3-11ea-ab63-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <24a40096-69c3-11ea-8722-0242ac1a0003> ;
+    skos:definition "Test-Child-Child"@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:prefLabel "Test-Child-Child"@de .
+
+<5f959e38-3b94-11ea-a209-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <2d553cfe-3b93-11ea-9ddf-0242ac1a0003> ;
+    skos:definition """* Inhalte zuhörend verstehen,\r
+* gezielt nachfragen,\r
+* Verstehen und Nicht-Verstehen zum Ausdruck bringen."""@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:prefLabel "verstehend zuhören"@de .
+
+<6cba87aa-3b93-11ea-97b6-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <2d553cfe-3b93-11ea-9ddf-0242ac1a0003> ;
+    skos:definition """* sich an Gesprächen beteiligen,\r
+*  gemeinsam entwickelte Gesprächsregeln beachten: z.B. andere zu Ende sprechen lassen, auf Gesprächsbeiträge anderer eingehen, beim Thema bleiben,\r
+* Anliegen und Konflikte gemeinsam mit anderen diskutieren und klären"""@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:prefLabel "Gespräche führen"@de .
+
+<a81a6b98-3b94-11ea-b0b0-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <2d553cfe-3b93-11ea-9ddf-0242ac1a0003> ;
+    skos:definition """* Perspektiven einnehmen,\r
+* sich in eine Rolle hineinversetzen und sie gestalten,\r
+* Situationen in verschiedenen Spielformen szenisch entfalten."""@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:prefLabel "szenisch spielen"@de .
+
+<ceeeaf4a-3b94-11ea-989e-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <2d553cfe-3b93-11ea-9ddf-0242ac1a0003> ;
+    skos:definition """* Beobachtungen wiedergeben,\r
+* Sachverhalte beschreiben,\r
+* Begründungen und Erklärungen geben,\r
+* Lernergebnisse präsentieren und dabei Fachbegriffe benutzen,\r
+* über Lernerfahrungen sprechen und andere in ihren Lernprozessen unterstützen."""@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:prefLabel "über Lernen sprechen"@de .
+
+<173a2110-69c3-11ea-b850-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:definition "Test"@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:narrower <24a40096-69c3-11ea-8722-0242ac1a0003> ;
+    skos:prefLabel "Test"@de ;
+    skos:topConceptOf <1e2537a8-3b92-11ea-800f-0242ac1a0003> .
+
+<24a40096-69c3-11ea-8722-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:broader <173a2110-69c3-11ea-b850-0242ac1a0003> ;
+    skos:definition "Test Child"@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:narrower <30a5a17e-69c3-11ea-ab63-0242ac1a0003> ;
+    skos:prefLabel "Test-Child"@de .
+
+<2d553cfe-3b93-11ea-9ddf-0242ac1a0003> a skos:Concept ;
+    skos:broadMatch educationalContext:grundschule ;
+    skos:definition """Die mündliche Sprache ist ein zentrales Mittel aller schulischen und außerschulischen Kommunikation. Sprechen ist immer auch soziales Handeln.\r
+\r
+Die Kinder entwickeln eine demokratische Gesprächskultur und erweitern ihre mündliche Sprachhandlungskompetenz. Sie führen Gespräche, erzählen, geben und verarbeiten Informationen, gestalten ihr Sprechen bewusst und leisten mündliche Beiträge zum Unterricht.\r
+\r
+Sie drücken ihre Gedanken und Gefühle aus und formulieren ihre Äußerungen im Hinblick auf Zuhörer und Situation angemessen, hören aufmerksam und genau zu, nehmen die Äußerungen anderer auf und setzen sich mit diesen konstruktiv auseinander."""@de ;
+    skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> ;
+    skos:narrower <038cc8e6-3b94-11ea-9db2-0242ac1a0003>,
+        <5f959e38-3b94-11ea-a209-0242ac1a0003>,
+        <6cba87aa-3b93-11ea-97b6-0242ac1a0003>,
+        <a81a6b98-3b94-11ea-b0b0-0242ac1a0003>,
+        <ceeeaf4a-3b94-11ea-989e-0242ac1a0003> ;
+    skos:prefLabel "Sprechen und Zuhören"@de ;
+    skos:topConceptOf <1e2537a8-3b92-11ea-800f-0242ac1a0003> .
+
+educationalContext:grundschule skos:inScheme <1e2537a8-3b92-11ea-800f-0242ac1a0003> .
+
+<1e2537a8-3b92-11ea-800f-0242ac1a0003> a skos:ConceptScheme ;
+    dct:creator "Kultusministerkonferenz"@de ;
+v2    dct:title "Bildungsstandards im Fach Deutsch für den Primarbereich"@de ;
+    skos:hasTopConcept <173a2110-69c3-11ea-b850-0242ac1a0003>,
+        <2d553cfe-3b93-11ea-9ddf-0242ac1a0003> .
+
