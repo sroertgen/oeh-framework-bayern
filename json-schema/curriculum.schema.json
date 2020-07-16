@@ -26,7 +26,7 @@
         "name": {
             "title": "Name if the item",
             "type": "string",
-            "description": "Name of the Curriculum",
+            "description": "Name of the Curriculum"
         },
         "description": {
             "title": "Description",
@@ -157,7 +157,6 @@
                     "type": "string",
                     "title": "Name",
                     "description": "Name of subelement"
-
                 }
             }
         },
@@ -169,6 +168,6 @@
             "_display": {
                 "placeholder": "URL of the Creative Commons license"
             }
-        },
+        }
     }
 }
