@@ -34,8 +34,8 @@
         "type": {
             "title": "Type of item",
             "type": "string",
-            "description": "Must be of type \"Course\"",
-            "enum": ["Course"],
+            "description": "Must be of type \"Course\" (https://schema.org/Course)",
+            "default": "Course",
             "examples": [
                 "Course"
             ]
@@ -61,7 +61,14 @@
                         "a description"
                     ]
                 }
-            }
+            },
+            "examples": [
+                {
+                    "@language": "de",
+                    "@value": "Eine Beschreibung"
+                },
+                {"de": "Eine Beschreibung"}
+            ]
         },
         "description": {
             "title": "Description",
@@ -85,6 +92,13 @@
                     ]
                 }
             },
+            "examples": [
+                {
+                    "@language": "de",
+                    "@value": "Eine Beschreibung"
+                },
+                {"de": "Eine Beschreibung"}
+            ],
             "_display": {
                 "rows": 5,
                 "placeholder": "A short description of the resource"
@@ -219,17 +233,21 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "enum": [
-                        "DefinedTerm"
-                    ]
+                    "default": "DefinedTerm"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the educational level as defined in the term set."
+                    "description": "Name of the educational level as defined in the term set.",
+                    "examples": [
+                        "12"
+                    ]
                 },
                 "url": {
                     "type": "string",
-                    "format": "uri"
+                    "format": "uri",
+                    "examples": [
+                                "http://w3id.org/openeduhub/vocabs/educationalLevel/2"
+                    ]
                 },
                 "inDefinedTermSet": {
                     "type": "object",
@@ -242,7 +260,15 @@
                         }
                     }
                 }
-            }
+            },
+            "examples": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "12",
+                    "url": "http://w3id.org/openeduhub/vocabs/educationalLevel/2",
+                    "inDefinedTermSet": "http://w3id.org/openeduhub/vocabs/educationalLevel/"
+                }
+            ]
         },
         "oeh:educationalContext": {
             "title": "Educational context (Bildungsstufe) for the item",
@@ -257,9 +283,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "enum": [
-                        "DefinedTerm"
-                    ]
+                    "default": "DefinedTerm"
                 },
                 "name": {
                     "type": "string",
@@ -280,7 +304,15 @@
                         }
                     }
                 }
-            }
+            },
+            "examples": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "Sekundarbereich I",
+                    "url": "http://w3id.org/openeduhub/vocabs/educationalContext/sek_1",
+                    "inDefinedTermSet": "http://w3id.org/vocabs/openeduhub/vocabs/educationalContext/"
+                }
+            ]
         },
         "hasPart": {
             "title": "Subelements of item",
@@ -291,9 +323,7 @@
                 "properties": {
                     "type": {
                         "type": "string",
-                        "enum": [
-                            "Course"
-                        ]
+                        "default": "Course"
                     },
                     "id": {
                         "type": "string",
