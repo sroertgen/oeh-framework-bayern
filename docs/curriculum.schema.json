@@ -9,6 +9,7 @@
             "id": "@id",
             "type": "@type",
             "@vocab": "http://schema.org/"
+            "oeh": "http://w3id.org/openeduhub/vocabs/"
         }
     },
     "properties": {
@@ -243,7 +244,7 @@
                 }
             }
         },
-        "educationalContext": {
+        "oeh:educationalContext": {
             "title": "Educational context (Bildungsstufe) for the item",
             "description": "The corresponding educational context of the item.",
             "type": "object",
