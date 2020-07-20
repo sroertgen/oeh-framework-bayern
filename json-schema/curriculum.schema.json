@@ -8,17 +8,16 @@
         "@context": {
             "id": "@id",
             "type": "@type",
-            "@vocab": "http://schema.org/",
-            "skos": "http://www.w3.org/2004/02/skos/core#",
-            "prefLabel": "skos:prefLabel",
-            "inScheme": "skos:inScheme",
-            "Concept": "skos:Concept"
+            "@vocab": "http://schema.org/"
         }
     },
     "properties": {
         "@context": {
             "type": "object",
             "additionalProperties": true,
+            "default": {
+                "id": "@id"
+            },
             "_display": {
                 "className": "hidden"
             }
@@ -26,22 +25,65 @@
         "id": {
             "title": "URL",
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "examples": [
+                "http://example-perma-id.com/curriculum_bayern/f27af3e8-89f9-11ea-ad3d-0242ac1a0003"
+            ]
         },
         "type": {
             "title": "Type of item",
             "type": "string",
             "description": "Must be of type \"Course\"",
-            "enum": ["Course"]
+            "enum": ["Course"],
+            "examples": [
+                "Course"
+            ]
         },
         "name": {
             "title": "Name if the item",
-            "type": "string",
-            "description": "Name of the Curriculum"
+            "type": "object",
+            "description": "Name of the Curriculum with corresponding langstring",
+            "properties" : {
+                "@language": {
+                    "title": "language of the item corresponding to \"Tags for Identifying Languages\" (see https://tools.ietf.org/html/bcp47) ",
+                    "type": "string",
+                    "examples": [
+                        "de",
+                        "en"
+                    ]
+                },
+                "@value": {
+                    "title": "title in the respective language",
+                    "type": "string",
+                    "examples": [
+                        "Eine Beschreibung",
+                        "a description"
+                    ]
+                }
+            }
         },
         "description": {
             "title": "Description",
-            "type": "string",
+            "description": "A description of the item.",
+            "type": "object",
+            "properties" : {
+                "@language": {
+                    "title": "language of the item corresponding to \"Tags for Identifying Languages\" (see https://tools.ietf.org/html/bcp47) ",
+                    "type": "string",
+                    "examples": [
+                        "de",
+                        "en"
+                    ]
+                },
+                "@value": {
+                    "title": "title in the respective language",
+                    "type": "string",
+                    "examples": [
+                        "Ein Titel",
+                        "a title"
+                    ]
+                }
+            },
             "_display": {
                 "rows": 5,
                 "placeholder": "A short description of the resource"
@@ -50,6 +92,7 @@
         "creator": {
             "title": "Creator",
             "type": "array",
+            "description": "Publisher of the item",
             "items": {
                 "type": "object",
                 "properties": {
@@ -62,10 +105,74 @@
                         ]
                     },
                     "name": {
-                        "title": "Name",
+                        "title": "Name if the item",
+                        "type": "object",
+                        "description": "Name of the item with corresponding langstring",
+                            "properties" : {
+                                "@language": {
+                                "title": "language of the item corresponding to \"Tags for Identifying Languages\" (see https://tools.ietf.org/html/bcp47) ",
+                                "type": "string",
+                                "examples": [
+                                    "de",
+                                    "en"
+                                ]
+                            },
+                            "@value": {
+                                "title": "title in the respective language",
+                                "type": "string",
+                                "examples": [
+                                    "Staatsinstitut für Schulqualität und Bildungsforschung (ISB)"
+                                ]
+                            }
+                        }
+                    },
+                    "id": {
+                        "title": "URL",
                         "type": "string",
-                        "_display": {
-                            "placeholder": "The creator's name"
+                        "format": "uri"
+                    }
+                }
+            },
+            "required": [
+                "name",
+                "type"
+            ]
+        },
+        "publisher": {
+            "title": "Creator",
+            "type": "array",
+            "description": "Publisher of the item",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "title": "Type",
+                        "type": "string",
+                        "enum": [
+                            "Person",
+                            "Organization"
+                        ]
+                    },
+                    "name": {
+                        "title": "Name if the item",
+                        "type": "object",
+                        "description": "Name of the item with corresponding langstring",
+                            "properties" : {
+                                "@language": {
+                                "title": "language of the item corresponding to \"Tags for Identifying Languages\" (see https://tools.ietf.org/html/bcp47) ",
+                                "type": "string",
+                                "examples": [
+                                    "de",
+                                    "en"
+                                ]
+                            },
+                            "@value": {
+                                "title": "title in the respective language",
+                                "type": "string",
+                                "examples": [
+                                    "Staatsinstitut für Schulqualität und Bildungsforschung (ISB)"
+                                ]
+                            }
                         }
                     },
                     "id": {
@@ -82,13 +189,25 @@
         },
         "courseCode": {
             "title": "Course Code",
+            "description": "A code to identify the item.",
             "type": "array",
             "items": {
-                "type": "string"
+                "type": "object",
+                "properties" : {
+                    "@language": {
+                        "title": "language of the item corresponding to \"Tags for Identifying Languages\" (see https://tools.ietf.org/html/bcp47) ",
+                        "type": "string"
+                    },
+                    "@value": {
+                        "title": "title in the respective language",
+                        "type": "string"
+                    }
+                }
             }
         },
         "educationalLevel": {
             "title": "Educational level for the item",
+            "description": "The corresponding educational level of the item.",
             "type": "object",
             "_widget": {
                 "type": "SkohubLookup",
@@ -100,14 +219,18 @@
                 "type": {
                     "type": "string",
                     "enum": [
-                        "Concept"
+                        "DefinedTerm"
                     ]
                 },
-                "id": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the educational level as defined in the term set."
+                },
+                "url": {
                     "type": "string",
                     "format": "uri"
                 },
-                "inScheme": {
+                "inDefinedTermSet": {
                     "type": "object",
                     "properties": {
                         "id": {
@@ -122,6 +245,7 @@
         },
         "educationalContext": {
             "title": "Educational context (Bildungsstufe) for the item",
+            "description": "The corresponding educational context of the item.",
             "type": "object",
             "_widget": {
                 "type": "SkohubLookup",
@@ -133,14 +257,18 @@
                 "type": {
                     "type": "string",
                     "enum": [
-                        "Concept"
+                        "DefinedTerm"
                     ]
                 },
-                "id": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the educational level as defined in the term set."
+                },
+                "url": {
                     "type": "string",
                     "format": "uri"
                 },
-                "inScheme": {
+                "inDefinedTermSet": {
                     "type": "object",
                     "properties": {
                         "id": {
@@ -155,6 +283,7 @@
         },
         "hasPart": {
             "title": "Subelements of item",
+            "description": "The subelements of the item.",
             "type": "array",
             "items": {
                 "type": "object",
@@ -181,7 +310,7 @@
             "title": "License",
             "type": "string",
             "format": "uri",
-            "pattern": "^https:\/\/creativecommons.org\/(licenses|licences|publicdomain)\/.*",
+            "description": "Link to the license or copyright notice.",
             "_display": {
                 "placeholder": "URL of the Creative Commons license"
             }

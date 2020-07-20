@@ -18,6 +18,6 @@ Some inspiration was coming from the [K12OCX project](https://k12ocx.github.io/k
 
 ### Documentation
 
-The documentation of the schema is created using [JSON Schema for humans](https://github.com/coveooss/json-schema-for-humans)
+The documentation of the schema is created using [JSON Schema for humans](https://github.com/coveooss/json-schema-for-humans), e.g.
 
-`generate-schema-doc [OPTIONS] SCHEMA_FILE [RESULT_FILE]`
+`generate-schema-doc curriculum.schema.json --expand-buttons`
