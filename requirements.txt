@@ -1,1 +1,4 @@
 json-schema-for-humans
+pandas
+rdflib
+rdflib-jsonld
