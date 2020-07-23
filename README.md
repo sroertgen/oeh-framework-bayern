@@ -14,6 +14,8 @@ The model for providing the data is described using [JSON Schema](https://json-s
 
 Some inspiration was coming from the [K12OCX project](https://k12ocx.github.io/k12ocx-specs/). 
 
+As suggested in [this issue](https://github.com/K12OCX/k12ocx-specs/issues/45) by Phil Barker `about` is used as the property to define the subject with a `DefinedTerm` type.
+
 - TODO elaborate
 
 ### Documentation

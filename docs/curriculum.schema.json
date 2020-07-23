@@ -220,6 +220,56 @@
                 }
             }
         },
+        "about": {
+            "title": "Subject of the item",
+            "description": "The corresponding subject the item belongs to.",
+            "type": "object",
+            "_widget": {
+                "type": "SkohubLookup",
+                "options": {
+                    "url": "http://vocabs.openeduhub.de/w3id.org/openeduhub/vocabs/discipline/"
+                }
+            },
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "default": "DefinedTerm"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the subject as defined in the term set.",
+                    "examples": [
+                        "Mathematik"
+                    ]
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "examples": [
+                                "http://w3id.org/openeduhub/vocabs/discipline/mathematics/380"
+                    ]
+                },
+                "inDefinedTermSet": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "enum": [
+                                "http://vocabs.openeduhub.de/w3id.org/openeduhub/vocabs/discipline/"
+                            ]
+                        }
+                    }
+                }
+            },
+            "examples": [
+                {
+                    "@type": "DefinedTerm",
+                    "name": "Mathematik",
+                    "url": "http://w3id.org/openeduhub/vocabs/discipline/380",
+                    "inDefinedTermSet": "http://w3id.org/openeduhub/vocabs/discipline/"
+                }
+            ]
+        },
         "educationalLevel": {
             "title": "Educational level for the item",
             "description": "The corresponding educational level of the item.",
