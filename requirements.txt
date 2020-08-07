@@ -1,4 +1,7 @@
+bs4
 json-schema-for-humans
 pandas
 rdflib
 rdflib-jsonld
+requests
+xlsxwriter

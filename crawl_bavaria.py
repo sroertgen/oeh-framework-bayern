@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 import xlsxwriter
+import uuid
 
-workbook = xlsxwriter.Workbook('curriculum_all.xlsx')
+workbook = xlsxwriter.Workbook('data/curriculum_all.xlsx')
 worksheet = workbook.add_worksheet()
 
 subjects_all = [
@@ -152,12 +153,16 @@ subjects = [
 gs_subjects = ['deutsch', 'mathematik', 'musik', 'ethik', 'sport',
                'kunst', 'katholische-religionslehre', 'evangelische-religionslehre']
 
+# wrongly named educationalContext, should be schoolType
 educationalContext = [
     'grundschule',
     'foerderschule',
     'mittelschule',
     'realschule',
-    'gymnasium'
+    'gymnasium',
+    'berufsschule',
+    'fachoberschule',
+    'wirtschaftsschule'
 ]
 
 
@@ -189,25 +194,32 @@ row_sheet = 2
 listEnumeration = [1, 0, 0]
 
 
-def write_item(fullStatement, humanCodingScheme, smartLevel, grade):
+def write_item(fullStatement, humanCodingScheme, smartLevel, grade, url):
     global row_sheet
 
+    identifier = str(uuid.uuid4())
+
+    row_a = 'A' + str(row_sheet)
     row_b = 'B' + str(row_sheet)
     row_c = 'C' + str(row_sheet)
     row_d = 'D' + str(row_sheet)
+    row_h = 'H' + str(row_sheet)
     row_i = 'I' + str(row_sheet)
     row_j = 'J' + str(row_sheet)
+    worksheet.write(row_a, identifier)
     worksheet.write(row_b, fullStatement)
     worksheet.write(row_c, humanCodingScheme)
     worksheet.write(row_d, smartLevel)
+    worksheet.write(row_h, url)
     worksheet.write(row_i, 'de')
     worksheet.write(row_j, grade)
     row_sheet += 1
 
 
-def get_item_title(soup, subject, context, grade):
+def get_item_title(soup, subject, context, grade, url):
     global row_sheet
     global listEnumeration
+    url = url
     div = soup.find_all('div', 'toggable')
     try:
         for i, item in enumerate(div):
@@ -225,7 +237,7 @@ def get_item_title(soup, subject, context, grade):
                 humanCodingScheme = fach_jgs + '_' + subject + '_' + \
                     str(grade) + '_' + str(listEnumeration[0])
                 write_item(fullStatement,
-                           humanCodingScheme, smartLevel, grade)
+                           humanCodingScheme, smartLevel, grade, url)
 
                 if 'headline_lvl2' in div[i+1]['class']:
                     listEnumeration[1] = listEnumeration[1] + 1
@@ -247,7 +259,7 @@ def get_item_title(soup, subject, context, grade):
                 humanCodingScheme = fach_jgs + '_' + subject + '_' + \
                     str(grade) + '_' + smartLevel
                 write_item(fullStatement,
-                           humanCodingScheme, smartLevel, grade)
+                           humanCodingScheme, smartLevel, grade, url)
 
                 if 'headline_lvl2' in div[i+1]['class']:
                     listEnumeration[1] = listEnumeration[1] + 1
@@ -272,7 +284,7 @@ def get_item_title(soup, subject, context, grade):
                 humanCodingScheme = fach_jgs + '_' + subject + '_' + \
                     str(grade) + '_' + smartLevel
                 write_item(fullStatement,
-                           humanCodingScheme, smartLevel, grade)
+                           humanCodingScheme, smartLevel, grade, url)
 
                 if 'headline_lvl2' in div[i+1]['class']:
                     listEnumeration[1] = listEnumeration[1] + 1
@@ -296,19 +308,26 @@ try:
     for grade in range(1, 14):
         for subject in subjects_all:
             for context in educationalContext:
-                if context == 'grundschule' and grade >= 5:
+                if context == 'grundschule' and grade > 4:
                     continue
                 if context == 'grundschule' and subject not in gs_subjects:
                     continue
-                if context in ['gymnasium', 'realschule', 'mittelschule', 'foerderschule'] and grade <= 5:
+                if context in [
+                        'gymnasium', 'realschule', 'mittelschule',
+                        'foerderschule', 'wirtschaftsschule',
+                        'berufsschule', 'fachoberschule'
+                ] and grade < 5:
                     continue
                 url = 'https://www.lehrplanplus.bayern.de/fachlehrplan/' + \
                     context + '/' + str(grade) + '/' + subject
                 print(url)
                 r = requests.get(url)
                 soup = BeautifulSoup(r.text, 'html.parser')
-                get_item_title(soup, context, subject, grade)
+                get_item_title(soup, context, subject, grade, url)
     workbook.close()
 
 except KeyboardInterrupt:
+    workbook.close()
+
+except:
     workbook.close()
